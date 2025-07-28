@@ -5,7 +5,7 @@ import time
 #constants
 gravity = 9.8  # Gravity constant
 elasticity = 0.5  # Elasticity factor for bounce
-friction = 0.9  # Friction factor for horizontal movement
+friction = 0.5 # Friction factor for horizontal movement
 
 pygame.init()
 # Set up the display
@@ -22,8 +22,10 @@ ground_color = (255,255,255)
 ground_height = 100  # Height of the ground
 ground_rect = pygame.Rect(0, height - ground_height, width, ground_height)
 
+
+
 class objects:
-    def __init__(self, x, y, width, height, vertical_velocity=0, horizontal_velocity=0, elasticity=elasticity, friction=friction):
+    def __init__(self, x, y, width, height, vertical_velocity=0, horizontal_velocity=0, obj_elasticity=elasticity, obj_friction=friction):
         self.rect = pygame.Rect(x, 520 - y, width, height)
         self.vertical_velocity = vertical_velocity
         self.horizontal_velocity = horizontal_velocity
@@ -33,10 +35,10 @@ class objects:
         self.color = (255, 255, 255)
         self.elasticity = elasticity
         self.friction = friction
+    
 
     def collide(self):
         self.vertical_velocity *= -self.elasticity  # elasticity
-        self.horizontal_velocity *= self.friction  # friction
         self.momentum = self.weight * self.vertical_velocity
 
     def update(self):
@@ -51,9 +53,13 @@ class objects:
         self.momentum = self.weight * self.vertical_velocity
 
     def apply_gravity(self, gravity):
-        time.sleep(0.05)
+        time.sleep(0.002)
         self.vertical_velocity += gravity * 0.1
         self.momentum = self.weight * self.vertical_velocity
+    def apply_friction(self):
+        self.horizontal_velocity *= self.friction #friction
+    def apply_air_resistance(self):
+        self.vertical_velocity *= 0.999
 
 main1 = objects(  100 #x position
                 , 200 #y position
@@ -61,10 +67,9 @@ main1 = objects(  100 #x position
                 , 50  #height
                 , vertical_velocity=0
                 , horizontal_velocity=10
-                , elasticity= elasticity
-                , friction= friction
+                , obj_elasticity=elasticity
+                , obj_friction=friction
                 )
-
 
 # UI: labeled text entry fields and button
 labels = ['x', 'y', 'h_velocity', 'v_velocity', 'elasticity', 'friction']
@@ -85,6 +90,9 @@ start_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((350, 20),
                                              text='Start',
                                              manager=MANAGER)
 
+#last 5 positions
+last_positions = [0,10]
+
 # Main loop
 running = True
 simulation_started = False
@@ -104,6 +112,8 @@ while running:
                     v_vel = float(entries['v_velocity'].get_text()) if entries['v_velocity'].get_text() else 0
                     elast = float(entries['elasticity'].get_text()) if entries['elasticity'].get_text() else elasticity
                     frict = float(entries['friction'].get_text()) if entries['friction'].get_text() else friction
+                    # Reset last positions
+                    last_positions = [0,10]
                     
                     # Create new object with input values
                     main1 = objects(x, y, 50, 50, v_vel, h_vel, elast, frict)
@@ -121,31 +131,50 @@ while running:
     # Draw the ground
     pygame.draw.rect(screen, ground_color, ground_rect)
 
+
+    # Display live object stats on the right side
+    font = pygame.font.Font(None, 36)
+    stats_x = width - 500  # Position on the right side
+    
+    # Vertical velocity
+    v_vel_text = font.render(f"Vertical Velocity: {main1.vertical_velocity:.2f}", True, (255, 255, 255))
+    screen.blit(v_vel_text, (stats_x, 60))
+    
+    # Horizontal velocity
+    h_vel_text = font.render(f"Horizontal Velocity: {main1.horizontal_velocity:.2f}", True, (255, 255, 255))
+    screen.blit(h_vel_text, (stats_x, 100))
+    
+    # X coordinate
+    x_coord_text = font.render(f"X Position: {main1.rect.x}", True, (255, 255, 255))
+    screen.blit(x_coord_text, (stats_x, 140))
+    
+    # Y coordinate
+    y_coord_text = font.render(f"Y Position: {main1.rect.y}", True, (255, 255, 255))
+    screen.blit(y_coord_text, (stats_x, 180))
+
     # Update the object only if simulation has started
+    
+    main1.draw(screen)
     if simulation_started:
-        main1.draw(screen)
         main1.apply_gravity(gravity)
+        main1.apply_air_resistance()
         main1.update()
+
+        if main1.rect.y == 570:
+            main1.apply_friction()
 
         if main1.rect.colliderect(ground_rect):
             main1.collide()
             main1.rect.bottom = ground_rect.top
 
-        # Display live object stats on the right side
-        font = pygame.font.Font(None, 36)
-        stats_x = width - 500  # Position on the right side
-        
-        # Vertical velocity
-        v_vel_text = font.render(f"Vertical Velocity: {main1.vertical_velocity:.2f}", True, (255, 255, 255))
-        screen.blit(v_vel_text, (stats_x, 60))
-        
-        # Horizontal velocity
-        h_vel_text = font.render(f"Horizontal Velocity: {main1.horizontal_velocity:.2f}", True, (255, 255, 255))
-        screen.blit(h_vel_text, (stats_x, 100))
-        
-        # Momentum
-        momentum_text = font.render(f"Momentum: {main1.momentum:.2f}", True, (255, 255, 255))
-        screen.blit(momentum_text, (stats_x, 140))
+        if main1.rect.bottom >= ground_rect.top:
+            if abs(last_positions[0] - last_positions[-1]) <= 1:
+                main1.vertical_velocity = 0
+            # Store last 5 positions
+            last_positions.append(main1.rect.y)
+            if len(last_positions) > 5:
+                last_positions.pop(0)
+
 
     # Update the display
     pygame.display.flip()
