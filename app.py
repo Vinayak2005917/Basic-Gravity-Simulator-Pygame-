@@ -5,6 +5,7 @@ from Physics_Objects import PhysicsObjects
 
 
 pygame.init()
+pygame.mixer.init()  # Initialize sound mixer
 WIDTH = 1400
 HEIGHT = 720
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -112,6 +113,14 @@ simulation_elapsed_time = 0
 # Real-world unit conversions
 PIXELS_PER_METER = 100  # 100 pixels = 1 meter
 FRAME_RATE = 60  # 60 FPS
+
+# Load sound effect
+try:
+    bounce_sound = pygame.mixer.Sound("mixkit-on-or-off-light-switch-tap-2585.wav")
+    bounce_sound.set_volume(1)  # Set volume to 30%
+except pygame.error:
+    bounce_sound = None
+    print("Sound file not found - continuing without sound")
 
 #Objects
 
@@ -247,10 +256,20 @@ while running:
         Object1.apply_air_resistance()
         Object1.update()
         
+        # Check for collision and play sound when object reaches y=500
+        if Object1.rect.y >= 500 and Object1.vertical_velocity > 0:
+            # Play sound only once per bounce approach
+            if not hasattr(Object1, 'sound_played') or not Object1.sound_played:
+                if bounce_sound:
+                    bounce_sound.play()
+                Object1.sound_played = True
+        
         if Object1.rect.colliderect(Ground.rect):
             Object1.collide()
             Object1.rect.y = Ground.rect.top - Object1.rect.height
             bounce_count += 1
+            # Reset sound flag for next bounce
+            Object1.sound_played = False
 
         if Object1.rect.y == 620:
             Object1.apply_friction()
