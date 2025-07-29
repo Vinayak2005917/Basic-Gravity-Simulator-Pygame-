@@ -55,10 +55,41 @@ friction_input = pygame_gui.elements.UITextEntryLine(
     relative_rect=pygame.Rect(650, 50, 60, 25),
     manager=ui_manager
 )
-friction_input.set_text('0.8')
+friction_input.set_text('0.35')
 
 apply_button = pygame_gui.elements.UIButton(
     relative_rect=pygame.Rect(730, 50, 60, 25),
+    text='Apply',
+    manager=ui_manager
+)
+
+# Create input fields for velocities
+h_velocity_label = pygame_gui.elements.UILabel(
+    relative_rect=pygame.Rect(410, 85, 80, 25),
+    text='H Velocity:',
+    manager=ui_manager
+)
+
+h_velocity_input = pygame_gui.elements.UITextEntryLine(
+    relative_rect=pygame.Rect(500, 85, 60, 25),
+    manager=ui_manager
+)
+h_velocity_input.set_text('10')
+
+v_velocity_label = pygame_gui.elements.UILabel(
+    relative_rect=pygame.Rect(580, 85, 80, 25),
+    text='V Velocity:',
+    manager=ui_manager
+)
+
+v_velocity_input = pygame_gui.elements.UITextEntryLine(
+    relative_rect=pygame.Rect(650, 85, 60, 25),
+    manager=ui_manager
+)
+v_velocity_input.set_text('0')
+
+apply_velocity_button = pygame_gui.elements.UIButton(
+    relative_rect=pygame.Rect(730, 85, 60, 25),
     text='Apply',
     manager=ui_manager
 )
@@ -93,7 +124,7 @@ Object1 = PhysicsObjects(
     horizontal_velocity=10,
     object_weight=1,
     obj_elasticity=0.8,
-    obj_friction=0.8,
+    obj_friction=0.35,
     object_color=(255, 255, 255)
 )
 
@@ -106,7 +137,7 @@ Ground = PhysicsObjects(
     horizontal_velocity=0,
     object_weight=1,
     obj_elasticity=0.8,
-    obj_friction=0.8,
+    obj_friction=0.35,
     object_color=(255, 255, 255)
 )
 
@@ -118,12 +149,38 @@ simulation_running = False
 clock = pygame.time.Clock()
 last_positions = [0,100]
 
+# Drag functionality variables
+dragging = False
+drag_offset_x = 0
+drag_offset_y = 0
+
 while running:
     time_delta = clock.tick(60)/1000.0
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        
+        # Handle mouse events for dragging
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  # Left mouse button
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                if Object1.rect.collidepoint(mouse_x, mouse_y):
+                    dragging = True
+                    drag_offset_x = mouse_x - Object1.rect.x
+                    drag_offset_y = mouse_y - Object1.rect.y
+        
+        if event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:  # Left mouse button
+                dragging = False
+        
+        if event.type == pygame.MOUSEMOTION:
+            if dragging:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                Object1.rect.x = mouse_x - drag_offset_x
+                Object1.rect.y = mouse_y - drag_offset_y
+                # Only reset vertical velocity when dragging to allow horizontal momentum
+                Object1.vertical_velocity = 0
         
         if event.type == pygame.USEREVENT:
             if event.user_type == pygame_gui.UI_BUTTON_PRESSED:
@@ -148,12 +205,25 @@ while running:
                     # Apply new elasticity and friction values
                     try:
                         new_elasticity = float(elasticity_input.get_text()) if elasticity_input.get_text() else 0.8
-                        new_friction = float(friction_input.get_text()) if friction_input.get_text() else 0.8
+                        new_friction = float(friction_input.get_text()) if friction_input.get_text() else 0.35
                         
                         # Update object properties - friction needs same calculation as constructor
                         Object1.elasticity = new_elasticity
                         Object1.friction = 1 - new_friction
                         print(f"Applied - Elasticity: {Object1.elasticity}, Friction input: {new_friction}, Friction attribute: {Object1.friction}")
+                    except ValueError:
+                        # If invalid input, keep current values
+                        pass
+                if event.ui_element == apply_velocity_button:
+                    # Apply new velocity values
+                    try:
+                        new_h_velocity = float(h_velocity_input.get_text()) if h_velocity_input.get_text() else 10
+                        new_v_velocity = float(v_velocity_input.get_text()) if v_velocity_input.get_text() else 0
+                        
+                        # Update object velocities
+                        Object1.horizontal_velocity = new_h_velocity
+                        Object1.vertical_velocity = new_v_velocity
+                        print(f"Applied Velocities - Horizontal: {Object1.horizontal_velocity}, Vertical: {Object1.vertical_velocity}")
                     except ValueError:
                         # If invalid input, keep current values
                         pass
