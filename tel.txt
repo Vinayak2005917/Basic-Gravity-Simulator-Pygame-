@@ -1,0 +1,450 @@
+Vertical Velocity: 0.98
+Horizontal Velocity: 10.00
+X Position: 110
+Y Position: 320
+
+Vertical Velocity: 1.96
+Horizontal Velocity: 10.00
+X Position: 120
+Y Position: 321
+
+Vertical Velocity: 2.93
+Horizontal Velocity: 10.00
+X Position: 130
+Y Position: 323
+
+Vertical Velocity: 3.91
+Horizontal Velocity: 10.00
+X Position: 140
+Y Position: 326
+
+Vertical Velocity: 4.89
+Horizontal Velocity: 10.00
+X Position: 150
+Y Position: 330
+
+Vertical Velocity: 5.86
+Horizontal Velocity: 10.00
+X Position: 160
+Y Position: 335
+
+Vertical Velocity: 6.83
+Horizontal Velocity: 10.00
+X Position: 170
+Y Position: 341
+
+Vertical Velocity: 7.80
+Horizontal Velocity: 10.00
+X Position: 180
+Y Position: 348
+
+Vertical Velocity: 8.78
+Horizontal Velocity: 10.00
+X Position: 190
+Y Position: 356
+
+Vertical Velocity: 9.75
+Horizontal Velocity: 10.00
+X Position: 200
+Y Position: 365
+
+Vertical Velocity: 10.72
+Horizontal Velocity: 10.00
+X Position: 210
+Y Position: 375
+
+Vertical Velocity: 11.68
+Horizontal Velocity: 10.00
+X Position: 220
+Y Position: 386
+
+Vertical Velocity: 12.65
+Horizontal Velocity: 10.00
+X Position: 230
+Y Position: 398
+
+Vertical Velocity: 13.62
+Horizontal Velocity: 10.00
+X Position: 240
+Y Position: 411
+
+Vertical Velocity: 14.58
+Horizontal Velocity: 10.00
+X Position: 250
+Y Position: 425
+
+Vertical Velocity: 15.55
+Horizontal Velocity: 10.00
+X Position: 260
+Y Position: 440
+
+Vertical Velocity: 16.51
+Horizontal Velocity: 10.00
+X Position: 270
+Y Position: 456
+
+Vertical Velocity: 17.47
+Horizontal Velocity: 10.00
+X Position: 280
+Y Position: 473
+
+Vertical Velocity: 18.43
+Horizontal Velocity: 10.00
+X Position: 290
+Y Position: 491
+
+Vertical Velocity: 19.40
+Horizontal Velocity: 10.00
+X Position: 300
+Y Position: 510
+
+Vertical Velocity: 20.36
+Horizontal Velocity: 10.00
+X Position: 310
+Y Position: 530
+
+Vertical Velocity: 21.31
+Horizontal Velocity: 10.00
+X Position: 320
+Y Position: 551
+
+Vertical Velocity: -11.14
+Horizontal Velocity: 10.00
+X Position: 330
+Y Position: 570
+
+Vertical Velocity: -10.15
+Horizontal Velocity: 10.00
+X Position: 340
+Y Position: 559
+
+Vertical Velocity: -9.16
+Horizontal Velocity: 10.00
+X Position: 350
+Y Position: 549
+
+Vertical Velocity: -8.17
+Horizontal Velocity: 10.00
+X Position: 360
+Y Position: 540
+
+Vertical Velocity: -7.18
+Horizontal Velocity: 10.00
+X Position: 370
+Y Position: 532
+
+Vertical Velocity: -6.19
+Horizontal Velocity: 10.00
+X Position: 380
+Y Position: 525
+
+Vertical Velocity: -5.21
+Horizontal Velocity: 10.00
+X Position: 390
+Y Position: 519
+
+Vertical Velocity: -4.23
+Horizontal Velocity: 10.00
+X Position: 400
+Y Position: 514
+
+Vertical Velocity: -3.24
+Horizontal Velocity: 10.00
+X Position: 410
+Y Position: 510
+
+Vertical Velocity: -2.26
+Horizontal Velocity: 10.00
+X Position: 420
+Y Position: 507
+
+Vertical Velocity: -1.28
+Horizontal Velocity: 10.00
+X Position: 430
+Y Position: 505
+
+Vertical Velocity: -0.30
+Horizontal Velocity: 10.00
+X Position: 440
+Y Position: 504
+
+Vertical Velocity: 0.68
+Horizontal Velocity: 10.00
+X Position: 450
+Y Position: 504
+
+Vertical Velocity: 1.66
+Horizontal Velocity: 10.00
+X Position: 460
+Y Position: 505
+
+Vertical Velocity: 2.64
+Horizontal Velocity: 10.00
+X Position: 470
+Y Position: 507
+
+Vertical Velocity: 3.61
+Horizontal Velocity: 10.00
+X Position: 480
+Y Position: 510
+
+Vertical Velocity: 4.59
+Horizontal Velocity: 10.00
+X Position: 490
+Y Position: 514
+
+Vertical Velocity: 5.56
+Horizontal Velocity: 10.00
+X Position: 500
+Y Position: 519
+
+Vertical Velocity: 6.54
+Horizontal Velocity: 10.00
+X Position: 510
+Y Position: 525
+
+Vertical Velocity: 7.51
+Horizontal Velocity: 10.00
+X Position: 520
+Y Position: 532
+
+Vertical Velocity: 8.48
+Horizontal Velocity: 10.00
+X Position: 530
+Y Position: 540
+
+Vertical Velocity: 9.45
+Horizontal Velocity: 10.00
+X Position: 540
+Y Position: 549
+
+Vertical Velocity: 10.42
+Horizontal Velocity: 10.00
+X Position: 550
+Y Position: 559
+
+Vertical Velocity: 11.39
+Horizontal Velocity: 5.00
+X Position: 560
+Y Position: 570
+
+Vertical Velocity: -6.18
+Horizontal Velocity: 5.00
+X Position: 565
+Y Position: 570
+
+Vertical Velocity: -5.19
+Horizontal Velocity: 5.00
+X Position: 570
+Y Position: 564
+
+Vertical Velocity: -4.21
+Horizontal Velocity: 5.00
+X Position: 575
+Y Position: 559
+
+Vertical Velocity: -3.23
+Horizontal Velocity: 5.00
+X Position: 580
+Y Position: 555
+
+Vertical Velocity: -2.24
+Horizontal Velocity: 5.00
+X Position: 585
+Y Position: 552
+
+Vertical Velocity: -1.26
+Horizontal Velocity: 5.00
+X Position: 590
+Y Position: 550
+
+Vertical Velocity: -0.28
+Horizontal Velocity: 5.00
+X Position: 595
+Y Position: 549
+
+Vertical Velocity: 0.70
+Horizontal Velocity: 5.00
+X Position: 600
+Y Position: 549
+
+Vertical Velocity: 1.68
+Horizontal Velocity: 5.00
+X Position: 605
+Y Position: 550
+
+Vertical Velocity: 2.65
+Horizontal Velocity: 5.00
+X Position: 610
+Y Position: 552
+
+Vertical Velocity: 3.63
+Horizontal Velocity: 5.00
+X Position: 615
+Y Position: 555
+
+Vertical Velocity: 4.60
+Horizontal Velocity: 5.00
+X Position: 620
+Y Position: 559
+
+Vertical Velocity: 5.58
+Horizontal Velocity: 5.00
+X Position: 625
+Y Position: 564
+
+Vertical Velocity: 6.55
+Horizontal Velocity: 2.50
+X Position: 630
+Y Position: 570
+
+Vertical Velocity: -3.76
+Horizontal Velocity: 2.50
+X Position: 632
+Y Position: 570
+
+Vertical Velocity: -2.78
+Horizontal Velocity: 2.50
+X Position: 634
+Y Position: 567
+
+Vertical Velocity: -1.80
+Horizontal Velocity: 2.50
+X Position: 636
+Y Position: 565
+
+Vertical Velocity: -0.82
+Horizontal Velocity: 2.50
+X Position: 638
+Y Position: 564
+
+Vertical Velocity: 0.16
+Horizontal Velocity: 2.50
+X Position: 640
+Y Position: 564
+
+Vertical Velocity: 1.14
+Horizontal Velocity: 2.50
+X Position: 642
+Y Position: 565
+
+Vertical Velocity: 2.12
+Horizontal Velocity: 2.50
+X Position: 644
+Y Position: 567
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 1.25
+X Position: 646
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.62
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.31
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.16
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.08
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.04
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.02
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.01
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+
+Vertical Velocity: 0.00
+Horizontal Velocity: 0.00
+X Position: 647
+Y Position: 570
+

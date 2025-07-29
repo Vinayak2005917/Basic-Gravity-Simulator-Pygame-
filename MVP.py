@@ -53,13 +53,14 @@ class objects:
         self.momentum = self.weight * self.vertical_velocity
 
     def apply_gravity(self, gravity):
-        time.sleep(0.002)
+        time.sleep(0.2)
         self.vertical_velocity += gravity * 0.1
         self.momentum = self.weight * self.vertical_velocity
     def apply_friction(self):
         self.horizontal_velocity *= self.friction #friction
     def apply_air_resistance(self):
         self.vertical_velocity *= 0.999
+        self.horizontal_velocity *= 0.999
 
 main1 = objects(  100 #x position
                 , 200 #y position
