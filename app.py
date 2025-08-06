@@ -95,6 +95,13 @@ apply_velocity_button = pygame_gui.elements.UIButton(
     manager=ui_manager
 )
 
+# Create How to Use button
+how_to_use_button = pygame_gui.elements.UIButton(
+    relative_rect=pygame.Rect(800, 50, 100, 50),
+    text='How to Use ?',
+    manager=ui_manager
+)
+
 # Colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -162,6 +169,14 @@ last_positions = [0,100]
 dragging = False
 drag_offset_x = 0
 drag_offset_y = 0
+
+space_render = 0
+left_render = 0
+right_render = 0
+
+# How to use popup variables
+show_how_to_use = False
+how_to_use_popup = None
 
 while running:
     time_delta = clock.tick(60)/1000.0
@@ -236,7 +251,28 @@ while running:
                     except ValueError:
                         # If invalid input, keep current values
                         pass
-        
+                if event.ui_element == how_to_use_button:
+                    # Show the how to use popup
+                    if not show_how_to_use:
+                        show_how_to_use = True
+                        how_to_use_popup = pygame_gui.windows.UIMessageWindow(
+                            rect=pygame.Rect(200, 150, 400, 300),
+                            html_message='<b>How to Use - Gravity Simulator</b><br><br>'
+                                       'Controls:<br>'
+                                       '• Start/Pause: Control simulation<br>'
+                                       '• Reset: Return to initial state<br>'
+                                       '• Space: Make object jump<br>'
+                                       '• Arrow Keys: Move object left/right<br>'
+                                       '• Mouse: Drag object to reposition<br><br>'
+                                       'More detailed instructions will be added here.',
+                            manager=ui_manager,
+                            window_title='How to Use'
+                        )
+                # Handle popup close button
+                if show_how_to_use and event.ui_element == how_to_use_popup:
+                    show_how_to_use = False
+                    how_to_use_popup = None
+
         ui_manager.process_events(event)
     
     ui_manager.update(time_delta)
@@ -287,9 +323,69 @@ while running:
                     if avg_movement <= 0.000000005:
                         Object1.vertical_velocity = 0
 
+    #interact with the object
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_SPACE]:
+        space_render = 20
+        time.sleep(0.0001)
+        Object1.vertical_velocity = -10
+    if keys[pygame.K_LEFT]:
+        left_render = 20
+        time.sleep(0.0001)
+        if Object1.horizontal_velocity < 0:
+            Object1.horizontal_velocity -= 3
+        else:
+            Object1.horizontal_velocity = -10
+    if keys[pygame.K_RIGHT]:
+        right_render = 20
+        time.sleep(0.0001)
+        if Object1.horizontal_velocity > 0:
+            Object1.horizontal_velocity += 3
+        else:
+            Object1.horizontal_velocity = 10
+
+    if Object1.rect.x > WIDTH-50 or Object1.rect.x < 0:
+        if bounce_sound:
+            bounce_sound.play()
+        Object1.horizontal_velocity *= -1
+        bounce_count += 1
+    if Object1.rect.y < 0:
+        if bounce_sound:
+            bounce_sound.play()
+        Object1.vertical_velocity *= -1
+        bounce_count += 1
+
+    if space_render > 0:
+        space_render -= 1
+        space_text = stats_font.render("Space!", True, WHITE)
+        screen.blit(space_text, (1100, 200))
+    if left_render > 0:
+        left_render -= 1
+        left_text = stats_font.render("Left!", True, WHITE)
+        screen.blit(left_text, (1160, 200))
+    if right_render > 0:
+        right_render -= 1
+        right_text = stats_font.render("Right!", True, WHITE)
+        screen.blit(right_text, (1200, 200))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     # Always draw the object
     Object1.draw(screen)
-    
+
     # Draw live stats in top left corner
     stats_y_offset = 10  # Start below the buttons
 
